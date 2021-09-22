@@ -9,7 +9,11 @@ class World {
         new Cloud()
     ];
     backgroundObjects = [
+<<<<<<< HEAD
         new BackgroundObject('img/5.Fondo/Capas/3.Fondo3/1.png')
+=======
+        new BackgroundObject('img/5.Fondo/Capas/3.Fondo3/1.png', 0, 100)
+>>>>>>> 226f97eae2b8239079b80add9f6001b823f03d4a
     ]
     canvas;
     ctx;
