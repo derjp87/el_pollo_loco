@@ -28,6 +28,7 @@ class World {
 
             this.checkCollisions();
             this.checkThrowObjects();
+            this.checkBottles();
         }, 200);
     }
 
@@ -45,6 +46,15 @@ class World {
                 this.statusBar.setPercentage(this.character.energy);
             }
         });
+    }
+
+    checkBottles() {
+        this.level.bottles.forEach((hotbottle) => {
+            if( this.character.isCollecting(hotbottle) ){
+                this.character.collect();
+                this.bottleBar.setPercentage(this.character.bottleValue);
+            }
+        })
     }
 
 

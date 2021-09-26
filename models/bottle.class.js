@@ -1,5 +1,5 @@
 class Bottle extends MoveableObject {
-    y = 370;
+    y = 370; 
     height = 70;
     width = 60;
 

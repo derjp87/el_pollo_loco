@@ -8,7 +8,7 @@ class BottleBar extends DrawableObject {
         'img/7.Marcadores/Barra/Marcador_botella/Azul/100_.png',
     ];
 
-    percentage = 100;
+    percentage = 0;
 
     constructor() {
         super();
