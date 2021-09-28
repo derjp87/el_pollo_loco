@@ -6,7 +6,6 @@ class MoveableObject extends DrawableObject {
         energy = 100;
         lastHit = 0;
         lastCollect = 0;
-        world;
     
 
         applyGravity() {
