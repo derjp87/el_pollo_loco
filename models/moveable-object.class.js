@@ -5,8 +5,8 @@ class MoveableObject extends DrawableObject {
         acceleration = 2.5;
         energy = 100;
         lastHit = 0;
-        bottleValue = 0;
         lastCollect = 0;
+        world;
     
 
         applyGravity() {
@@ -50,23 +50,6 @@ class MoveableObject extends DrawableObject {
 
         isDead() {
             return this.energy == 0;
-        }
-
-        // character.isCollecting(bottles);
-        isCollecting(b) {
-            return this.x + this.width > b.x &&
-            this.y + this.height > b.y &&
-            this.x < b.x &&
-            this.y < b.y + b.height;
-        }
-
-        collect() {
-            this.bottleValue += 20;
-            if (this.bottleValue > 100) {
-                this.bottleValue = 100;
-            } else {
-                this.lastCollect = new Date().getTime();
-            }
         }
 
         /**

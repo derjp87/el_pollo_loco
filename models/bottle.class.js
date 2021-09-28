@@ -1,10 +1,17 @@
 class Bottle extends MoveableObject {
-    y = 370; 
-    height = 70;
-    width = 60;
+    
+    BOTTLES = [
+        'img/6.botella/2.Botella_enterrada1.png',
+        'img/6.botella/2.Botella_enterrada2.png'
+    ];
 
-    constructor() {
-        super().loadImage('img/7.Marcadores/Icono/Botella.png');
-        this.x = 300 + Math.random() * 2000; //Zahl zwischen 200 und 700
+    constructor(x, y, image) {
+        super();
+        this.loadImage(image);
+        this.loadImages(this.BOTTLES)
+        this.x = x;
+        this.y = y;
+        this.height = 60;
+        this.width = 60;
     }
 }
