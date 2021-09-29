@@ -10,6 +10,11 @@ class World {
     bossBar = new StatusBar(3750, 50, 100, 3);
     throwableObjects = [];
     collectedBottles = [];
+    collect_bottle_sound = new Audio('audio/bottle_collect.mp3');
+    throw_bottle_sound = new Audio('audio/bottle_throw.mp3');
+    won_sound = new Audio('audio/won.mp3');
+    lost_sound = new Audio('audio/lost.mp3');
+
 
     constructor(canvas, keyboard) {
         this.ctx = canvas.getContext('2d');
@@ -40,12 +45,14 @@ class World {
             this.throwableObjects.push(bottle);
             this.collectedBottles.pop();
             this.bottleBar.setPercentage(this.collectedBottles.length * 5);
+            this.throw_bottle_sound.play();
         }
     }
 
     checkCollisions() {
         this.checkCollisionsEnemy();
         this.checkCollisionsBottles();
+        this.checkCollisionsEndboss();
     }
 
     checkCollisionsEnemy() {
@@ -63,9 +70,26 @@ class World {
                 this.collectedBottles.push(bottle);
                 this.bottleBar.setPercentage(this.collectedBottles.length * 5);
                 this.level.bottles.splice(bottle, 1);
+                this.collect_bottle_sound.play();
             }
         })
     }
+
+    checkCollisionsEndboss() {
+        this.throwableObjects.forEach((to) => {
+            this.level.enemies.forEach((enemy) => {
+                if (to.isColliding(enemy) && (enemy instanceof Endboss)) {
+                    enemy.hit();
+                    if (enemy.isDead()) {
+                        this.displayEnemyIsDead();
+                    } else {
+                        enemy.isHurt();
+                        this.bossBar.setPercentage(enemy.energy);
+                    }
+                };
+            });
+        });
+    };
 
 
     draw() {
@@ -109,7 +133,6 @@ class World {
             this.flipImage(mo);
         }
         mo.draw(this.ctx);
-        mo.drawFrame(this.ctx);
 
 
         if (mo.otherDirection) {

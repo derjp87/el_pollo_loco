@@ -44,6 +44,8 @@ class Character extends MoveableObject {
 
     world;
     walking_sound = new Audio('audio/running.mp3');
+    jump_sound = new Audio('audio/character_jump.mp3');
+    hurt_sound = new Audio('audio/character_hurt.mp3');
 
 
     constructor() {
@@ -56,51 +58,68 @@ class Character extends MoveableObject {
         this.animate();
     }
 
-
     animate() {
+        this.movements();
+        this.vitality();
+    }
 
+    movements() {
         setInterval(() => {
-            this.walking_sound.pause();
-            if (this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x) {
-                this.moveRight();
-                this.otherDirection = false;
-                this.walking_sound.play();
-            }
-
-            if (this.world.keyboard.LEFT && this.x > 0) {
-                this.moveLeft();
-                this.otherDirection = true;
-                this.walking_sound.play();
-            }
-
-            if (this.world.keyboard.SPACE && !this.isAboveGround()) {
-                this.jump();
-            }
-
+            this.checkJumping();
+            this.checkBorderRight();
+            this.checkBorderLeft();
+            this.isJumping();
             this.world.camera_x = -this.x + 100;
+        }, 1000 / 60);   
+    }
 
-        }, 1000 / 60);
-
-
+    vitality() {
         setInterval(() => {
-
             if (this.isDead()) {
                 this.playAnimation(this.IMAGES_DEAD);
             } else if(this.isHurt()){
                 this.playAnimation(this.IMAGES_HURT);
+                this.hurt_sound.play();
             } else if (this.isAboveGround()) {
                 this.playAnimation(this.IMAGES_JUMPING);
             } else {
-
                 if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT) {
-                    //walk animation
                     this.playAnimation(this.IMAGES_WALKING);
                 }
             }
         }, 50);
     }
+  
 
-    jump() {
-        this.speedY = 30;
+    checkBorderRight() {
+        if (this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x) {
+            this.moveRight();
+            this.otherDirection = false;
+            this.walking_sound.play();
+        };
+
+    }
+
+    checkBorderLeft() {
+        if (this.world.keyboard.LEFT && this.x > 0) {
+            this.moveLeft();
+            this.otherDirection = true;
+            this.walking_sound.play();
+        }
+    }
+
+    checkJumping() {
+        if (this.isAboveGround() || this.speedY > 0) {
+            this.playAnimation(this.IMAGES_JUMPING);
+            } else {
+                this.walking_sound.pause();
+            }       
+    }
+
+    isJumping() {
+        if (this.world.keyboard.SPACE && !this.isAboveGround()) {
+            this.jump();
+            this.jump_sound.play();
+        }
     }
 }
