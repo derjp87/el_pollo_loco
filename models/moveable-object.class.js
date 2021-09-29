@@ -1,4 +1,5 @@
 class MoveableObject extends DrawableObject {
+    
         speed = 0.15;
         otherDirection = false;
         speedY = 0;
@@ -6,7 +7,6 @@ class MoveableObject extends DrawableObject {
         energy = 100;
         lastHit = 0;
     
-
         applyGravity() {
             setInterval(() => {
                 if(this.isAboveGround() || this.speedY > 0)
@@ -16,14 +16,13 @@ class MoveableObject extends DrawableObject {
         }
 
         isAboveGround() {
-            if(this instanceof ThrowableObject) { // Throwable object should always fall
+            if(this instanceof ThrowableObject) {
                 return true;
             } else {
             return this.y < 145;
             }
         }
 
-        // character.isColliding(chicken);
         isColliding(mo) {
             return this.x + this.width > mo.x &&
                 this.y + this.height > mo.y &&
@@ -41,8 +40,8 @@ class MoveableObject extends DrawableObject {
         }
 
         isHurt() {
-            let timepassed = new Date().getTime() - this.lastHit; // difference in ms
-            timepassed = timepassed / 1000; // difference in s
+            let timepassed = new Date().getTime() - this.lastHit;
+            timepassed = timepassed / 1000;
             return timepassed < 1;
         }
 
@@ -54,8 +53,6 @@ class MoveableObject extends DrawableObject {
          * 
          * @param {Array} arr ['img/image1.png', 'img/image2.png', ...]
          */
-
-
         playAnimation(images) {
             let i = this.currentImage % images.length;
                 let path = images[i];

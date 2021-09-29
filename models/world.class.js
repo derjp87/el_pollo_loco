@@ -15,7 +15,6 @@ class World {
     won_sound = new Audio('audio/won.mp3');
     lost_sound = new Audio('audio/lost.mp3');
 
-
     constructor(canvas, keyboard) {
         this.ctx = canvas.getContext('2d');
         this.canvas = canvas;
@@ -91,7 +90,6 @@ class World {
         });
     };
 
-
     draw() {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
         this.ctx.translate(this.camera_x, 0);
@@ -134,6 +132,11 @@ class World {
         }
         mo.draw(this.ctx);
 
+        /*  this.ctx.beginPath();
+            this.ctx.lineWidth = '5';
+            this.ctx.strokeStyle = 'blue';
+            this.ctx.rect(mo.x, mo.y, mo.width, mo.height);
+            this.ctx.stroke(); */
 
         if (mo.otherDirection) {
             this.flipImageBack(mo);

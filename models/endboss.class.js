@@ -5,7 +5,6 @@ class Endboss extends MoveableObject {
     y = 50;
     hurt_chicken_sound = new Audio('audio/chicken_hurt.mp3');
 
-
     IMAGES_WALKING = [
         'img/4.Secuencias_Enemy_gigantón-Doña_Gallinota-/2.Ateción-ataque/1.Alerta/G5.png',
         'img/4.Secuencias_Enemy_gigantón-Doña_Gallinota-/2.Ateción-ataque/1.Alerta/G6.png',
@@ -48,7 +47,6 @@ class Endboss extends MoveableObject {
             } else {
                 this.playAnimation(this.IMAGES_WALKING);
             }
-            
         }, 200);
     }
 }

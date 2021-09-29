@@ -4,6 +4,7 @@ class Character extends MoveableObject {
     width = 120;
     y = 60;
     speed = 10;
+    
     IMAGES_WALKING = [
         'img/2.Secuencias_Personaje-Pepe-corrección/2.Secuencia_caminata/W-21.png',
         'img/2.Secuencias_Personaje-Pepe-corrección/2.Secuencia_caminata/W-22.png',
@@ -47,7 +48,6 @@ class Character extends MoveableObject {
     jump_sound = new Audio('audio/character_jump.mp3');
     hurt_sound = new Audio('audio/character_hurt.mp3');
 
-
     constructor() {
         super().loadImage('img/2.Secuencias_Personaje-Pepe-corrección/2.Secuencia_caminata/W-21.png');
         this.loadImages(this.IMAGES_WALKING);
@@ -90,14 +90,12 @@ class Character extends MoveableObject {
         }, 50);
     }
   
-
     checkBorderRight() {
         if (this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x) {
             this.moveRight();
             this.otherDirection = false;
             this.walking_sound.play();
         };
-
     }
 
     checkBorderLeft() {
