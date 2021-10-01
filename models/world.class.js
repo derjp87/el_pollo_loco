@@ -58,9 +58,28 @@ class World {
         this.level.enemies.forEach((enemy) => {
             if( this.character.isColliding(enemy) ) {
                 this.character.hit();
-                this.lifeBar.setPercentage(this.character.energy);
+                if (this.character.isDead()) {
+                    this.displayYouLost();
+                } else {
+                    this.lifeBar.setPercentage(this.character.energy);
+                }
             }
         });
+    }
+
+    displayYouLost() {
+        this.lost_sound.play();
+        setTimeout(function () {
+            document.getElementById('startScreen').style.display = 'flex';
+            document.getElementById('backgroundStart').style.display = 'none';
+            document.getElementById('canvas').style.display = 'none';
+            document.getElementById('backgroundGameOver').style.display = 'none';
+            document.getElementById('backgroundYouLost').style.display = 'flex';
+            setTimeout(function () {
+                document.getElementById('backgroundGameOver').style.display = 'flex';
+                document.getElementById('backgroundYouLost').style.display = 'none';
+            }, 2000);
+        }, 3000);
     }
 
     checkCollisionsBottles() {
@@ -80,7 +99,7 @@ class World {
                 if (to.isColliding(enemy) && (enemy instanceof Endboss)) {
                     enemy.hit();
                     if (enemy.isDead()) {
-                        this.displayEnemyIsDead();
+                        this.displayYouWon();
                     } else {
                         enemy.isHurt();
                         this.bossBar.setPercentage(enemy.energy);
@@ -89,6 +108,16 @@ class World {
             });
         });
     };
+
+    displayYouWon() {
+        this.won_sound.play();
+        setTimeout(function () {
+            document.getElementById('startScreen').style.display = 'flex';
+            document.getElementById('backgroundStart').style.display = 'none';
+            document.getElementById('backgroundGameOver').style.display = 'flex';
+            document.getElementById('canvas').style.display = 'none';
+        }, 3000);
+    }
 
     draw() {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);

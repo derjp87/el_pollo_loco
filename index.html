@@ -1,10 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
     <script src="models/drawable-object.class.js"></script>
     <script src="models/moveable-object.class.js"></script>
     <script src="models/character.class.js"></script>
@@ -20,17 +24,48 @@
     <script src="models/level.class.js"></script>
     <script src="models/throwable-object.class.js"></script>
     <script src="models/endboss.class.js"></script>
-    <script src="levels/level1.js"></script> 
+    <script src="levels/level1.js"></script>
     <script src="js/game.js"></script>
     <title>El Pollo Loco</title>
 </head>
-<body onload="init()">
 
-    <h1>El Pollo Loco</h1>
+<body>
 
-    <canvas id="canvas" width="720px" height="480px">
+    <div class="background"></div>
+    <div id="startContainer">
+        <div id="controlsContainer">
+            <div class="controls">
+                KEYBOARD CONTROLS
+            </div>
+            <div class="controls">
+                <img class="divMargin" src="img/arrow-left.png" style="height: 32px;">
+                <img class="divMargin" src="img/arrow-right.png" style="height: 32px;">
+                <div class="divMargin">left & right</div>
+            </div>
+            <div class="controls">
+                <div class="divMarginSpace">space</div>
+                <div class="divMargin">jump</div>
+            </div>
+            <div class="controls">
+                <div class="divMarginD">d</div>
+                <div class="divMargin">throw bottle</div>
+            </div>
+        </div>
+        <div id="startScreen">
+            <img id="backgroundStart" src="img/9.Intro _ Outro Image/Start Screen/Opción2.png">
+            <img id="backgroundGameOver" src="img/9.Intro _ Outro Image/_Game over_ screen/4.Game over!.png">
+            <img id="backgroundYouLost" src="img/9.Intro _ Outro Image/_Game over_ screen/2. oh no you lost!.png">
+        </div>
+        <canvas id="canvas" width="720px" height="480px"></canvas>
+    </div>
 
-    </canvas>
-    
+    <div class="navBar">
+        <div id="start" onclick="start()">Start</div>
+        <div id="controls" onclick="showControls()">Controls</div>
+        <div id="fullscreen" onclick="fullscreen()">Fullscreen</div>
+        <div id="tryAgain"><a href="/index.html">Try again</a></a></div>
+    </div>
+
 </body>
+
 </html>
