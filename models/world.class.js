@@ -75,10 +75,6 @@ class World {
             document.getElementById('canvas').style.display = 'none';
             document.getElementById('backgroundGameOver').style.display = 'none';
             document.getElementById('backgroundYouLost').style.display = 'flex';
-            setTimeout(function () {
-                document.getElementById('backgroundGameOver').style.display = 'flex';
-                document.getElementById('backgroundYouLost').style.display = 'none';
-            }, 2000);
         }, 3000);
     }
 

@@ -33,15 +33,15 @@ body {
 
 #backgroundGameOver {
     position: absolute;
-    width: 720;
-    height: 480;
+    width: 720px;
+    height: 480px;
     display: none;
 }
 
 #backgroundYouLost {
     position: absolute;
-    width: 720;
-    height: 480;
+    width: 720px;
+    height: 480px;
     display: none;
 }
 
@@ -50,7 +50,8 @@ body {
     width: 720px;
     height: 480px;
     background-color: grey;
-    opacity: 0.6;
+    opacity: 0.9;
+    z-index: 3;
 }
 
 .controls {
@@ -94,7 +95,7 @@ body {
     justify-content: center;
 }
 
-#starScreen {
+#startScreen {
     position: relative;
     width: 720px;
     height: 480px;

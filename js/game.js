@@ -27,7 +27,7 @@ function fullscreen() {
         }
 }
 
-function showControl() {
+function showControls() {
     document.querySelector('.d-none').classList.toggle('d-flex');
 }
 
