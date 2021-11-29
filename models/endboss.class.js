@@ -15,13 +15,11 @@ class Endboss extends MoveableObject {
         'img/4.Secuencias_Enemy_gigantón-Doña_Gallinota-/2.Ateción-ataque/1.Alerta/G11.png',
         'img/4.Secuencias_Enemy_gigantón-Doña_Gallinota-/2.Ateción-ataque/1.Alerta/G12.png'
     ];
-
     IMAGES_HIT = [
         'img/4.Secuencias_Enemy_gigantón-Doña_Gallinota-/3.Herida/G21.png',
         'img/4.Secuencias_Enemy_gigantón-Doña_Gallinota-/3.Herida/G22.png',
         'img/4.Secuencias_Enemy_gigantón-Doña_Gallinota-/3.Herida/G23.png'
     ];
-
     IMAGES_DEAD = [
         'img/4.Secuencias_Enemy_gigantón-Doña_Gallinota-/4.Muerte/G24.png',
         'img/4.Secuencias_Enemy_gigantón-Doña_Gallinota-/4.Muerte/G25.png',
